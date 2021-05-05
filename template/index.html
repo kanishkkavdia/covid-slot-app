@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaccine</title>
+</head>
+<body>
+    <h1 style="text-align:center">Covid Vaccine Availibility</h1>
+    <form class="form-control" action="/result",method="post">
+        <select class="form-select" name="states" id="states" onchange="selection('states','districts')">
+		<option value="" disabled selected hidden>Choose State...</option>
+		{% for x in data["states"] %}
+        <option value="{{x['state']}}">{{x["state"]}}</option>
+        {% endfor %}
+        </select>
+		<br>
+        <select class="form-select" name="districts" id="districts">
+         <option value="" disabled selected hidden>Choose District...</option>
+        </select>
+		<br>
+		<select  class="form-select" name="date" id="date">
+			<option value="" disabled selected hidden>Choose Date...</option>
+			{% for x in date_str %}
+			<option value="{{x}}">{{x}}</option>
+			{% endfor %}
+		</select>
+		<br>
+		<select class="form-select" name="min_age" id="min_age">
+			<option value="" disabled selected hidden>Age Group</option>
+			<option value=18>18-44</option>
+			<option value=45>45+</option>
+		</select>
+		<br>
+		<input  type="submit",value="Find",class="btn btn-danger">
+    </form>
+	
+	<br>
+	<br>
+	<br>
+	<h2>Or</h2>
+	<br>
+	<br>
+	<br>
+	<form class="form-control" action="/result2",method="post">
+		<label for="pincode">Enter Pinode:</label>
+		<input class="form-select" type="number" id="pincode" name="pincode">
+		<br>
+		<select class="form-select" name="date" id="date">
+		<option value="" disabled selected hidden>Choose Date...</option>
+		{% for x in date_str %}
+		<option value="{{x}}">{{x}}</option>
+		{% endfor %}
+		</select>
+		<br>
+		<select class="form-select" name="min_age" id="min_age">
+			<option value="" disabled selected hidden>Age Group</option>
+			<option value=18>18-44</option>
+			<option value=45>45+</option>
+		</select>
+		<br>
+		<input  type="submit",value="Find",class="btn btn-danger">
+	</form>
+	<br>
+	<br>
+	<br>
+	<h6>This is a non commercial service and uses data from the cowin api.</h6>
+	<h6>Developed by Kanishk Kavdia</h6>
+	<h6>Stay Home ! Stay Safe</h6>
+    <script src="{{url_for('static', filename='action.js')}}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
+</html>
